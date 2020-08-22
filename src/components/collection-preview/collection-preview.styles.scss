@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 30px;
+    position: relative;
   
     .title {
       font-size: 28px;
@@ -13,4 +14,3 @@
       justify-content: space-between;
     }
   }
-  
