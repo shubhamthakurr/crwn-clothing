@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -18,42 +18,46 @@ import Header from './components/header/header.component';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import { checkUserSession } from './redux/user/user.actions';
 
-class App extends React.Component {    
-    unsubscibeFromAuth = null
+const App = ({ checkUserSession, currentUser }) => {    
+    // unsubscibeFromAuth = null
 
-    componentDidMount(){
-      // const { setCurrentUser } = this.props;
+    // componentDidMount(){
+    //   // const { setCurrentUser } = this.props;
 
       
-      // this.unsubscibeFromAuth = auth.onAuthStateChanged( async userAuth =>{
-      //   if(userAuth){
-      //     const userRef = await createUserProfileDocument(userAuth);
+    //   // this.unsubscibeFromAuth = auth.onAuthStateChanged( async userAuth =>{
+    //   //   if(userAuth){
+    //   //     const userRef = await createUserProfileDocument(userAuth);
 
-      //     userRef.onSnapshot(snapShot => {
-      //       setCurrentUser({
-      //         id: snapShot.id,
-      //         ...snapShot.data()
-      //       });        
-      //     });
-        // }
+    //   //     userRef.onSnapshot(snapShot => {
+    //   //       setCurrentUser({
+    //   //         id: snapShot.id,
+    //   //         ...snapShot.data()
+    //   //       });        
+    //   //     });
+    //     // }
        
-        // setCurrentUser(userAuth);
+    //     // setCurrentUser(userAuth);
 
-        // addCollectionAndDocuments(
-        //   'collections', 
-        //   collectionsArray.map(({ title, items }) => ({ title, items }))
-        //   );
-      // });
+    //     // addCollectionAndDocuments(
+    //     //   'collections', 
+    //     //   collectionsArray.map(({ title, items }) => ({ title, items }))
+    //     //   );
+    //   // });
 
-      const { checkUserSession } = this.props;
-      checkUserSession();
-    }
+      
+    //   checkUserSession();
+    // }
 
-    componentWillUnmount(){
-      this.unsubscibeFromAuth();
-    }
+    // componentWillUnmount(){
+    //   this.unsubscibeFromAuth();
+    // }
   
-  render(){
+    useEffect(() => {
+      checkUserSession();      
+    }, [checkUserSession]);
+
+  // render(){
     return (
       <div>
         <Header />
@@ -65,7 +69,7 @@ class App extends React.Component {
             exact 
             path='/signin' 
             render ={() =>
-              this.props.currentUser ? (
+              currentUser ? (
                 <Redirect to='/' />
               ) : (
                 <SignInAndSignOut />
@@ -76,7 +80,7 @@ class App extends React.Component {
     ); 
   }
   
-}
+// }
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser
