@@ -2,12 +2,12 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
-const Stripe = require('stripe')("sk_test_51HH6PyAjACkNvoTrHCR4x33DB7oAzzxsWCdfauZL07K3qTF6HbSonaYHsGITidzmZEyBUkMtEaUDvIZ9yKDoBKfv006YqLX5Nk");
+const Stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 if(process.env.NODE_ENV !== 'production') require('dotenv').config();
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
