@@ -19,12 +19,6 @@ export function* fetchCollectionsAsync(){
         yield put(fetchCollectionsFailure(error.message));
     }
     
-    // collectionRef
-    //     .get()
-    //     .then(snapshot => {
-    //         const collectionsMap = coveryCollectionsSnapshotToMap(snapshot);
-    //         dispatch(fetchCollectionsSuccess(collectionsMap));
-    // }).catch(error => dispatch(fetchCollectionsFailure(error.message))); 
 }
 
 export function* fetchCollectionsStart(){

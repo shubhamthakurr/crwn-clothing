@@ -15,15 +15,6 @@ const SignIn =  ({ emailSignInStart, googleSignInStart }) => {
 
     const handleSubmit = async event => {
         event.preventDefault();
-        // const { emailSignInStart } = this.props;
-        // const { email, password } = this.state;
-
-        // try{
-        //     await auth.signInWithEmailAndPassword(email, password);
-        //     this.setState({email:'', password:''})
-        // } catch (error){
-        //     console.log(error);
-        // }
 
         emailSignInStart(email, password);
     }
@@ -34,8 +25,6 @@ const SignIn =  ({ emailSignInStart, googleSignInStart }) => {
         setCredentials({...userCredentials, [name]: value})
     }
 
-    // render(){
-        // const { googleSignInStart } = this.props;
 
         return(
             <div className='sign-in'>
@@ -74,7 +63,7 @@ const SignIn =  ({ emailSignInStart, googleSignInStart }) => {
             </div>
         );
     }
-// }
+
 
 const mapDispatchToProps = dispatch => ({
     googleSignInStart: () => dispatch(googleSignInStart()),
